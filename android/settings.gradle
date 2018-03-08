@@ -1,0 +1,3 @@
+rootProject.name = 'AndroidKeyPress'
+
+include ':app'
