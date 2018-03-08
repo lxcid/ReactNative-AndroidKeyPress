@@ -9,6 +9,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  TextInput,
   View
 } from 'react-native';
 
@@ -21,6 +22,18 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  onChangeText = (text) => {
+    console.log('onChangeText', text);
+  };
+
+  onKeyPress = ({ nativeEvent: { key } }) => {
+    console.log('onKeyPress', key);
+  };
+
+  onSelectionChange = ({ nativeEvent: { selection } }) => {
+    console.log('onSelectionChange', selection);
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -30,9 +43,9 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <TextInput style={styles.instructions} multiline onChangeText={this.onChangeText} onKeyPress={this.onKeyPress} onSelectionChange={this.onSelectionChange}>
+          <Text>{instructions}</Text>
+        </TextInput>
       </View>
     );
   }
